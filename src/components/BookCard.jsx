@@ -24,7 +24,14 @@ export default function BookCard({ book, onDelete }) {
             {favorite ? "♥" : "♡"}
           </button>
           {user?.role === "admin" && (
-            <button className="btn danger" onClick={() => onDelete(book.id)}>Delete</button>
+            <>
+              <Link className="btn primary" to={`/admin/edit-book/${book.id}`}>
+                Edit
+              </Link>
+              <button className="btn danger" onClick={() => onDelete(book.id)}>
+                Delete
+              </button>
+            </>
           )}
         </div>
       </div>

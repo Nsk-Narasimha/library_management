@@ -91,3 +91,15 @@ Library palette:
 - Gold `#D9A441`
 
 > This is a frontend/demo authentication flow. Passwords are stored in `db.json` because JSON Server is being used as a mock backend. For production, authentication should use a real backend with password hashing and authorization.
+
+## Edit Book
+
+Admin users can edit an existing book from the Admin Dashboard.
+
+1. Login with the admin account.
+2. Open **Admin Dashboard**.
+3. Click **Edit** on any book.
+4. The existing book data is loaded into the form.
+5. Change the required fields.
+6. Click **Save Changes**.
+7. The updated book is saved to JSON Server using `PUT /books/:id`.
