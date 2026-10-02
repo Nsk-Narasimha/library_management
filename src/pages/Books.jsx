@@ -24,17 +24,13 @@ export default function Books() {
     return [...books]
       .filter(b => category === "All" || b.category === category)
       .filter(b => `${b.title} ${b.author} ${b.category}`.toLowerCase().includes(q))
-      .sort((a,b) => sort === "rating" ? b.rating-a.rating : a.title.localeCompare(b.title));
+      .sort((a,b) => sort === "price" ? a.price-b.price : sort === "rating" ? b.rating-a.rating : a.title.localeCompare(b.title));
   }, [books, search, category, sort]);
 
   const remove = async (id) => {
     if (!confirm("Delete this book?")) return;
-    try {
-      await deleteBook(id);
-      setBooks((prev) => prev.filter((b) => String(b.id) !== String(id)));
-    } catch {
-      setError("The book could not be deleted.");
-    }
+    await deleteBook(id);
+    setBooks(prev => prev.filter(b => String(b.id) !== String(id)));
   };
 
   return (
@@ -48,7 +44,7 @@ export default function Books() {
         <input placeholder="Search by title, author or category..." value={search} onChange={e=>setSearch(e.target.value)} />
         <select value={category} onChange={e=>setCategory(e.target.value)}>{categories.map(c=><option key={c}>{c}</option>)}</select>
         <select value={sort} onChange={e=>setSort(e.target.value)}>
-          <option value="title">Sort: Title</option><option value="rating">Sort: Rating</option>
+          <option value="title">Sort: Title</option><option value="rating">Sort: Rating</option><option value="price">Sort: Price</option>
         </select>
       </div>
       <div className="grid">{filtered.map(book=><BookCard key={book.id} book={book} onDelete={user?.role==="admin"?remove:undefined}/>)}</div>

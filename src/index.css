@@ -110,18 +110,11 @@ nav a:hover {
 }
 
 /* CARD ACTIONS */
+
 .card-actions {
   display: flex;
   gap: 10px;
   padding: 15px;
-  width: 100%;
-  box-sizing: border-box;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.card-actions .btn {
-  flex: 1;
-  min-width: 90px;
 }
 
 .view-btn,
@@ -299,7 +292,8 @@ header {
 }
 
 .card,
-.book-card {
+.book-card,
+.destination-card {
   background: var(--library-white);
   border: 1px solid var(--library-border);
   border-radius: 14px;

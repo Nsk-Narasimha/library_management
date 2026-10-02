@@ -17,10 +17,7 @@ export default function Navbar() {
         <Link className="brand" to="/">📚 Library<span>Hub</span></Link>
         <nav>
           <Link to="/">Home</Link>
-          
-          {user?.role !== "admin" && (
-  <Link to="/books">Books</Link>
-)}
+          {user && <Link to="/books">Books</Link>}
           {user && <Link to="/favorites">❤️ Favorites</Link>}
           {user?.role === "admin" && <Link to="/admin">Admin</Link>}
           {!user ? (

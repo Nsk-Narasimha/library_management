@@ -14,12 +14,8 @@ export default function Login() {
     e.preventDefault();
     setError("");
     try {
-      const user = await login(form.email.trim().toLowerCase(), form.password);
-      if (user.role === "admin") {
-  navigate("/admin");
-} else {
-  navigate("/books");
-}
+      const user = await login(form.email, form.password);
+      navigate(location.state?.from || (user.role === "admin" ? "/admin" : "/books"));
     } catch (err) {
       setError(err.message);
     }

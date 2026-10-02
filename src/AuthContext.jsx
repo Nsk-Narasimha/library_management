@@ -28,8 +28,7 @@ export function AuthProvider({ children }) {
   const logout = () => setUser(null);
 
   const toggleFavorite = async (bookId) => {
-    if (!user) return false;
-    const previous = user;
+    if (!user) return;
     const favorites = user.favorites || [];
     const id = String(bookId);
     const next = favorites.includes(id)
@@ -37,13 +36,7 @@ export function AuthProvider({ children }) {
       : [...favorites, id];
     const updated = { ...user, favorites: next };
     setUser(updated);
-    try {
-      await updateUser(user.id, updated);
-      return true;
-    } catch (error) {
-      setUser(previous);
-      throw error;
-    }
+    await updateUser(user.id, updated);
   };
 
   return (

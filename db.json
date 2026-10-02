@@ -6,9 +6,7 @@
       "email": "admin@library.com",
       "password": "admin123",
       "role": "admin",
-      "favorites": [
-        "1"
-      ],
+      "favorites": [],
       "createdAt": "2026-09-01"
     },
     {
@@ -26,12 +24,14 @@
   ],
   "books": [
     {
+      "id": "1",
       "title": "The Alchemist",
       "author": "Paulo Coelho",
       "category": "Fiction",
       "isbn": "9780061122415",
       "publicationYear": 1988,
       "pages": 208,
+      "price": 399,
       "rating": 4.7,
       "language": "English",
       "availableCopies": 7,
@@ -41,10 +41,7 @@
       "tags": [
         "Adventure",
         "Motivation"
-      ],
-      "pdfFileName": "Little_Women.pdf",
-      "hasPdf": true,
-      "id": "1"
+      ]
     },
     {
       "id": "2",
@@ -54,6 +51,7 @@
       "isbn": "9780735211292",
       "publicationYear": 2018,
       "pages": 320,
+      "price": 599,
       "rating": 4.8,
       "language": "English",
       "availableCopies": 10,
@@ -63,9 +61,7 @@
       "tags": [
         "Habits",
         "Productivity"
-      ],
-      "pdf": "",
-      "pdfFileName": ""
+      ]
     },
     {
       "id": "3",
@@ -75,6 +71,7 @@
       "isbn": "9780132350884",
       "publicationYear": 2008,
       "pages": 464,
+      "price": 799,
       "rating": 4.6,
       "language": "English",
       "availableCopies": 5,
@@ -84,9 +81,7 @@
       "tags": [
         "Programming",
         "Software"
-      ],
-      "pdf": "",
-      "pdfFileName": ""
+      ]
     },
     {
       "id": "4",
@@ -96,6 +91,7 @@
       "isbn": "9788173711466",
       "publicationYear": 1999,
       "pages": 180,
+      "price": 250,
       "rating": 4.9,
       "language": "English",
       "availableCopies": 15,
@@ -105,9 +101,7 @@
       "tags": [
         "Biography",
         "Motivation"
-      ],
-      "pdf": "",
-      "pdfFileName": ""
+      ]
     },
     {
       "id": "5",
@@ -117,6 +111,7 @@
       "isbn": "9781593279288",
       "publicationYear": 2019,
       "pages": 544,
+      "price": 850,
       "rating": 4.8,
       "language": "English",
       "availableCopies": 7,
@@ -126,10 +121,7 @@
       "tags": [
         "Python",
         "Programming"
-      ],
-      "pdf": "",
-      "pdfFileName": ""
+      ]
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }

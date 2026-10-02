@@ -11,21 +11,15 @@ export default function Signup() {
   const submit = async (e) => {
     e.preventDefault();
     setError("");
-    try {
-      const existing = await findUserByEmail(form.email.trim());
-      if (existing.data.length) return setError("Email already registered.");
-      await createUser({
-        name: form.name.trim(),
-        email: form.email.trim().toLowerCase(),
-        password: form.password,
-        role: "user",
-        favorites: [],
-        createdAt: new Date().toISOString().slice(0,10)
-      });
-      navigate("/login");
-    } catch {
-      setError("Signup failed. Make sure JSON Server is running and try again.");
-    }
+    const existing = await findUserByEmail(form.email);
+    if (existing.data.length) return setError("Email already registered.");
+    await createUser({
+      ...form,
+      role: "user",
+      favorites: [],
+      createdAt: new Date().toISOString().slice(0,10)
+    });
+    navigate("/login");
   };
 
   return (

@@ -1,100 +1,93 @@
-# Library Management - Free Digital Library
+# LibraryHub — React + JSON Server
 
-React + Vite + JSON Server library application with free books, PDF upload, online page-by-page reading, downloading, favorites and a single Admin workspace.
+A fully connected Library Management System built with React, React Router, Axios and JSON Server.
 
 ## Features
 
-- User signup/login/logout
-- Browse, search, filter and sort books
-- Favorites
-- All books are FREE; no purchase/price flow
-- Admin-only library management
-- Admin dashboard with book/user/copy/PDF statistics
-- One Admin workspace with separate Add/Edit pages launched from `/admin`
-- PDF file picker in the Admin form
-- PDF validation (PDF only, maximum 10 MB)
-- Online PDF reader with previous/next page controls and zoom
-- PDF download
-- Admin delete books
-- Responsive layout
+- Login / Signup / Logout
+- User and Admin roles
+- Protected user routes
+- Protected admin routes
+- Book CRUD using JSON Server REST API
+- Search books
+- Filter by category
+- Sort by title, rating and price
+- Book details
+- Favorite books persisted to JSON Server
+- Admin dashboard
+- Add and edit books
+- Delete books
+- Responsive library-themed UI
 
-## Project structure
+## Demo accounts
 
-```text
-src/
-├── components/
-│   ├── AdminRoute.jsx
-│   ├── BookCard.jsx
-│   ├── Navbar.jsx
-│   └── ProtectedRoute.jsx
-├── pages/
-│   ├── Home.jsx
-│   ├── Books.jsx
-│   ├── BookDetails.jsx
-│   ├── PdfReader.jsx
-│   ├── Favorites.jsx
-│   ├── Login.jsx
-│   ├── Signup.jsx
-│   ├── NotFound.jsx
-│   └── admin/
-│       ├── AdminDashboard.jsx
-│       └── BookForm.jsx
-├── routes/
-│   └── AppRoutes.jsx
-├── api.js
-├── AuthContext.jsx
-├── App.jsx
-├── App.css
-└── index.css
-```
+### Admin
+- Email: `admin@library.com`
+- Password: `admin123`
 
-## Admin workflow
+### User
+- Email: `user@library.com`
+- Password: `user123`
 
-Go to `/admin`. The Admin workspace contains:
+## Run the project
 
-1. Library statistics
-2. Add Book button → `/admin/add-book`
-3. Separate Add/Edit Book pages
-4. Search and category filters
-5. Complete book inventory
-6. Edit and Delete actions
-
-## PDF upload and storage
-
-Select a PDF directly in the Admin form. The PDF binary is stored in the browser's IndexedDB database (`library-pdf-storage`) under the book ID. JSON Server stores only small book metadata such as `hasPdf` and `pdfFileName`, so large PDFs do not hit JSON Server's request-size limit.
-
-Maximum PDF size: 10 MB.
-
-**Important:** IndexedDB is local to the browser/device. A PDF uploaded by an admin in one browser is not automatically available to another browser or computer. For shared multi-user production storage, replace the IndexedDB layer with a real backend/cloud file-storage service.
-
-## Run locally
+Open a terminal in the project folder:
 
 ```bash
 npm install
+```
+
+Terminal 1:
+
+```bash
+npm run server
+```
+
+Terminal 2:
+
+```bash
+npm run dev
+```
+
+Or run both:
+
+```bash
 npm run dev:all
 ```
 
-Frontend: `http://localhost:5173`
+JSON Server runs at `http://localhost:5000`.
 
-JSON Server: `http://localhost:5000`
+Vite normally runs at the URL shown by `npm run dev`.
 
-## API configuration
+## API endpoints
 
-For deployment, set `VITE_API_URL` to the deployed API URL. Example:
+- `GET /books`
+- `GET /books/:id`
+- `POST /books`
+- `PUT /books/:id`
+- `DELETE /books/:id`
+- `GET /users`
+- `POST /users`
+- `PUT /users/:id`
 
-```text
-VITE_API_URL=https://your-api.example.com
-```
+## Routes
 
-If the variable is not set, local development uses `http://localhost:5000`.
+- `/` — Home
+- `/login` — Login
+- `/signup` — Signup
+- `/books` — User books
+- `/books/:id` — Book details
+- `/favorites` — User favorites
+- `/admin` — Admin dashboard
+- `/admin/add-book` — Add book
+- `/admin/edit-book/:id` — Edit book
 
-## Online reading
+## Design
 
-When a book has a PDF, the **Read Online** button opens `/books/:id/read`. The reader supports:
+Library palette:
+- Navy `#102A43`
+- Teal `#147D92`
+- Cream `#F7F4ED`
+- Gold `#D9A441`
 
-- Previous/Next page
-- Page counter
-- Zoom out/in
-- PDF rendering through `react-pdf`
-- Download PDF
-- Book Details link
+> This is a frontend/demo authentication flow. Passwords are stored in `db.json` because JSON Server is being used as a mock backend. For production, authentication should use a real backend with password hashing and authorization.

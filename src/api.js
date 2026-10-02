@@ -1,10 +1,9 @@
+
 import axios from "axios";
 
-const baseURL = (import.meta.env.VITE_API_URL || "https://library-management-backend-31s1.onrender.com/").replace(/\/$/, "");
-
 export const API = axios.create({
-  baseURL,
-  headers: { "Content-Type": "application/json" },
+  baseURL: "http://localhost:5000",
+  headers: { "Content-Type": "application/json" }
 });
 
 export const getBooks = () => API.get("/books");
